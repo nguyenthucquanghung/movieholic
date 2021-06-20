@@ -1,0 +1,281 @@
+//@import 'foundation-sites/scss/foundation';
+@import 'App/settings';
+/// include all modules of foundation
+//@include foundation-everything;
+@import 'foundation-sites/scss/util/util';
+
+$body-background: #222B31;
+$body-color: #95BBD5;
+$topbar-background: #222;
+
+
+.app__header {
+  padding: 2rem 2rem;
+  color: white;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font: 100% 'Roboto', Helvetica, Arial, sans-serif;
+  background-color: #222B31;
+  color: #95BBD5;
+}
+
+html {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: $body-color;
+}
+.log-button{
+  margin: 10px;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-family: 'Lato';
+  color: #fff;
+}
+
+.section {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.router-container {
+  display: grid;
+  grid-template-columns: 130px auto;
+  grid-template-rows: 100px auto;
+  grid-template-areas:
+      "brand top-bar"
+      "aside main";
+}
+
+.container {
+  grid-area: main;
+  max-width: 100%;
+  //
+  overflow: hidden;
+}
+
+.single {
+  .container {
+    max-height: 100%;
+  }
+}
+
+.aside {
+  grid-area: aside;
+  background-color: #222;
+  text-align: center;
+  &__nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    &__item {
+      display: block;
+      padding: 3rem 1rem 2rem;
+      color: #fff;
+      background-size: 24px 24px;
+      background-repeat: no-repeat;
+      background-position: center 1rem;
+      &--popular {
+        background-image: url('icon/popular.svg');
+      }
+      &--top-rated {
+        background-image: url('icon/top-rated.svg');
+      }
+      &--new-release {
+        background-image: url('icon/new-release.svg');
+      }
+      &--recommend {
+        background-image: url('icon/chef.svg');
+      }
+    }
+  }
+}
+
+.top-bar-brand {
+  grid-area: brand;
+  background: url('icon/ic_elastic.svg') no-repeat center;
+  background-size: 50px 50px;
+  padding-left: 42px !important;
+  text-indent: -9999px;
+  background-color: #222;
+}
+
+.top-bar {
+  border-bottom:2px solid #222;
+  //position: fixed;
+  z-index: 50;
+  width: 100%;
+  display: flex;
+  padding-left: 2rem;
+  grid-area: top-bar;
+  &__menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: none !important;
+    &__brand {
+
+    }
+    li {
+      display: inline-block;
+      position: relative;
+      a {
+        display: block;
+        padding: 2rem 1.5rem;
+        position: relative;
+        font-size: 1rem;
+        &:hover {
+          background-color: lighten($topbar-background, 5%);
+          + .submenu {
+            display: block;
+          }
+        }
+      }
+      &:hover {
+        .submenu {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__item {
+    &--account {
+      padding-left: 42px !important;
+      img {
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+        position: absolute;
+        top: 32px;
+        left: 0;
+
+      }
+    }
+  }
+
+  .submenu {
+    position: absolute;
+    top: 83px;
+    left: 0;
+    background-color: #222;
+    display: none;
+    li {
+      display: block;
+      a {
+        padding: 1rem 1.5rem;
+      }
+    }
+  }
+}
+
+@mixin scrollbars($size, $foreground-color, $background-color: transparent) {
+  ::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: $background-color;
+      border-radius: 10px;
+      cursor: pointer;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+.scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: hidden;
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    &__item {
+      max-width: 150px;
+      &:first-child {
+        padding-left: 0 !important;
+        a {
+          padding-left: 0 !important;
+        }
+      }
+      img {
+        //
+      }
+    }
+    h4 {
+      font-size: 1rem;
+    }
+  }
+}
+
+@include scrollbars(.5em, rgba(#fff, .5));
+
+//@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+
+
+/// or use just particular mouldes
+// @include foundation-global-styles;
+// @include foundation-grid;
+// @include foundation-typography;
+// @include foundation-button;
+// @include foundation-forms;
+// @include foundation-visibility-classes;
+// @include foundation-float-classes;
+// @include foundation-accordion;
+// @include foundation-accordion-menu;
+// @include foundation-badge;
+// @include foundation-breadcrumbs;
+// @include foundation-button-group;
+// @include foundation-callout;
+// @include foundation-close-button;
+// @include foundation-drilldown-menu;
+// @include foundation-dropdown;
+// @include foundation-dropdown-menu;
+// @include foundation-flex-video;
+// @include foundation-label;
+// @include foundation-media-object;
+// @include foundation-menu;
+// @include foundation-off-canvas;
+// @include foundation-orbit;
+// @include foundation-pagination;
+// @include foundation-progress-bar;
+// @include foundation-slider;
+// @include foundation-sticky;
+// @include foundation-reveal;
+// @include foundation-switch;
+// @include foundation-table;
+// @include foundation-tabs;
+// @include foundation-thumbnail;
+// @include foundation-title-bar;
+// @include foundation-tooltip;
+// @include foundation-top-bar;
+
+@import 'App/grid';
+@import 'App/single';

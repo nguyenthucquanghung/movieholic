@@ -1,0 +1,68 @@
+$star-empty-color: #d8d8d8;
+$star-full-color: #ffd055;
+
+.rating {
+  &__message {
+    display: inline-block;
+    position: relative;
+    top: -28px;
+    font-size: .8rem;
+    padding-left: 1rem;  
+  }
+}
+.stars {
+  cursor: pointer;
+  margin-bottom: 1rem;
+  display: inline-block;
+  &:after {
+    content:"";
+    width: 100%;
+    display: block;
+    clear: both;
+  }
+	&:hover {
+    .star polygon {
+      fill: $star-full-color !important;
+      stroke: $star-full-color;
+    }
+  }
+  
+	.star {
+    float: left;
+    polygon {
+      stroke: $star-empty-color;
+      fill: transparent;
+      stroke-linejoin: bevel;
+    }
+
+    &:hover ~ .star {
+      polygon {
+        stroke: $star-empty-color !important;
+        fill: transparent !important;
+      }
+    }
+  }
+  
+  &[data-stars] {
+    .star polygon {
+      fill: $star-full-color;
+      stroke: $star-full-color;
+    }
+  }
+
+  &[data-stars="0"] {
+    .star polygon {
+      stroke: $star-empty-color;
+      fill: transparent;
+    }
+  }
+
+  @for $i from 1 through 10 {
+    &[data-stars="#{$i}"] {
+      .star:nth-child(#{$i}) ~ .star polygon {
+        stroke: $star-empty-color;
+        fill: transparent;
+      }
+    }
+  }
+}
